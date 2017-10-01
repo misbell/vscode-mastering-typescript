@@ -50,6 +50,9 @@ namespace ExperimentsDecorators {
         constructor.prototype.testProperty = "testProperty_value"
 
         console.log(`show a test branch`);
+
+        console.log(`still`);
+        
         
         
         
