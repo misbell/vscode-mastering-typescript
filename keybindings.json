@@ -1,0 +1,9 @@
+/* {
+  "key": "opt-cmd+b",
+  "command": "HookyQR.beautify",
+      "when": "editorFocus"
+}
+*/
+
+/// not working, and don't need them
+// use shift opt f to prettify codeoh right

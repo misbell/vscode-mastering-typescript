@@ -1,0 +1,141 @@
+{
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "type": "node",
+                "request": "launch",
+                "name": "Launch Hello Program",
+                "program": "${workspaceRoot}/hello.js",
+                "outFiles": [
+                    "${workspaceRoot}/out/**/*.js"
+                ],
+                "sourceMaps": true,
+                "stopOnEntry": false,
+                "console": "internalConsole",
+                "trace": "all",
+
+                "args": [],
+                "cwd": "${workspaceRoot}",
+                "env": {
+                    "NODE_ENV": "development"
+                },
+
+           
+                "runtimeArgs": [
+                    "--nolazy"
+                ],
+                "runtimeExecutable": null
+              
+
+
+
+            },      
+            {
+                "type": "node",
+                "request": "launch",
+                "name": "Launch Hello Chapter 3 Program",
+                "program": "${workspaceRoot}/hello2.js",
+                "outFiles": [
+                    "${workspaceRoot}/out/**/*.js"
+                ],
+                "sourceMaps": true,
+                "stopOnEntry": false,
+                "console": "internalConsole",
+                "trace": "all",
+
+                "args": [],
+                "cwd": "${workspaceRoot}",
+                "env": {
+                    "NODE_ENV": "development"
+                },
+
+           
+                "runtimeArgs": [
+                    "--nolazy"
+                ],
+                "runtimeExecutable": null
+
+            },  
+
+            {
+                "type": "node",
+                "request": "launch",
+                "name": "Launch Hello Chapter 4 Program",
+                "program": "${workspaceRoot}/hello3.js",
+                "outFiles": [
+                    "${workspaceRoot}/out/**/*.js"
+                ],
+                "sourceMaps": true,
+                "stopOnEntry": false,
+                "console": "internalConsole",
+                "trace": "all",
+
+                "args": [],
+                "cwd": "${workspaceRoot}",
+                "env": {
+                    "NODE_ENV": "development"
+                },
+
+           
+                "runtimeArgs": [
+                    "--nolazy"
+                ],
+                "runtimeExecutable": null
+
+            },  
+
+            {
+                "type": "node",
+                "request": "attach",
+                "name" : "Attach to Process",
+                "port" : 5858
+            },
+
+            {
+                "name": "Launch localhost",
+                "type": "chrome",
+                "request": "launch",
+                "url": "http://localhost/mypage.html",
+                "webRoot": "${workspaceRoot}/wwwroot"
+            },
+            {
+                "name": "Launch index.html (disable sourcemaps)",
+                "type": "chrome",
+                "request": "launch",
+                "sourceMaps": false,
+                "file": "${workspaceRoot}/index.html"
+            },
+            {
+                "name": "Attach 9222",
+                "type": "chrome",
+                "request": "attach",
+                "port": 9222,
+                "sourceMaps": true
+            },
+            {
+                "name": "Launch chrome p. 9222",
+                "type": "chrome",
+                "request": "launch",
+                "url": "file:///Users/michaelisbell/TypeScriptProjects/hello/index.html",
+                "runtimeArgs":[
+                    "--new-window",
+                    "--remote-debugging-port=9222"
+                ],
+                "sourceMaps": true
+            },
+           
+            {
+                "name": "Launch Playground 9222",
+                "type": "chrome",
+                "request": "launch",
+                "url": "file:///Users/michaelisbell/TypeScriptProjects/hello/index2.html",
+                "runtimeArgs":[
+                    "--new-window",
+                    "--remote-debugging-port=9222"
+                ],
+                "sourceMaps": true
+            }
+          
+          
+        ]
+    }

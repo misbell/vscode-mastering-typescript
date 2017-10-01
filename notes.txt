@@ -1,0 +1,31 @@
+NOTES
+
+https://stackoverflow.com/questions/31169259/how-to-debug-typescript-files-in-visual-studio-code
+
+very important debug link
+
+windows developer day
+https://developer.microsoft.com/en-us/windows/projects/campaigns/windows-developer-day-commercial
+
+what sourcemaps are
+what VLQs are
+variable length quantities
+the actual mappings
+http://blog.teamtreehouse.com/introduction-source-maps
+
+scade swift
+
+
+
+HANDY
+snippets, log for console.log
+tab over end braces and such
+cmd-shift-\ for jump to closing race
+cmd-return for end of line semicolon
+shift alt F for prettyify
+cmd shift x for extensions
+cmd shift p for task
+alt up and down for block skipping, get to end of block fast
+home and end, for beginning of line, end of line
+cmd enter - add new line below
+
