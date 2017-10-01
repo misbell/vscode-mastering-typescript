@@ -49,6 +49,7 @@ var ExperimentsDecorators;
         // adding a property to the class definition, 'testProperty',
         // with the value 'testProperty_value'
         constructor.prototype.testProperty = "testProperty_value";
+        console.log("show a test branch");
     }
     var ClassWithConstructor = /** @class */ (function () {
         function ClassWithConstructor() {
