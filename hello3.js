@@ -211,4 +211,19 @@ var ExperimentsDecorators;
     }());
     // stopped here to npm install reflect-metadata and @types/reflect-metadata
 })(ExperimentsDecorators || (ExperimentsDecorators = {}));
+var Generics;
+(function (Generics) {
+    var Concatenator = /** @class */ (function () {
+        function Concatenator() {
+        }
+        Concatenator.prototype.concatenateArray = function (inputArray) {
+            var returnString = "";
+            for (var i = 0; i < inputArray.length; i++) {
+            }
+            return returnString;
+        };
+        ;
+        return Concatenator;
+    }());
+})(Generics || (Generics = {}));
 //# sourceMappingURL=hello3.js.map

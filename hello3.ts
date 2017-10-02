@@ -222,3 +222,19 @@ namespace ExperimentsDecorators {
  
 
 }
+
+namespace Generics {
+
+    class Concatenator<T> {
+        concatenateArray(inputArray: Array<T>): string {
+            
+            let returnString = "";
+
+            for (let i = 0; i < inputArray.length; i++) {
+
+            }
+            return returnString;
+        };
+    }
+
+}
