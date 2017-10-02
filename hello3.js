@@ -5,6 +5,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 var ExperimentsDecorators;
 (function (ExperimentsDecorators) {
     // decorator function
@@ -63,5 +66,108 @@ var ExperimentsDecorators;
     // and here you can see the dynamically added property
     var classConstrInstance = new ClassWithConstructor();
     console.log("classConstrInstance.testProperty : " + classConstrInstance.testProperty);
+    // property decorators
+    // 2 params, class prototype and property name
+    function propertyDec(target, propertyKey) {
+        console.log("target : " + target);
+        console.log("target.constructor : " + target.constructor);
+        if (typeof (target) === "function") {
+            console.log("class name : " + target.name);
+        }
+        else {
+            console.log("class name : " + target.constructor.name);
+        }
+        console.log("propertyKey : " + propertyKey + " ");
+    }
+    var ClassWithPropertyDec = /** @class */ (function () {
+        function ClassWithPropertyDec() {
+        }
+        __decorate([
+            propertyDec
+        ], ClassWithPropertyDec.prototype, "name", void 0);
+        return ClassWithPropertyDec;
+    }());
+    var StaticClassWithPropertyDec = /** @class */ (function () {
+        function StaticClassWithPropertyDec() {
+        }
+        __decorate([
+            propertyDec
+        ], StaticClassWithPropertyDec, "nname", void 0);
+        return StaticClassWithPropertyDec;
+    }());
+    // method decorators
+    // 3 params, class prototype, method name, method desc (only for ES5 and above)
+    // 
+    function methodDec(target, methodName, descriptor) {
+        console.log("target: " + target),
+            console.log("methodName : " + methodName),
+            console.log("target[methodName] : " + target[methodName] + " ");
+    }
+    var ClassWithMethodDec = /** @class */ (function () {
+        function ClassWithMethodDec() {
+        }
+        ClassWithMethodDec.prototype.print = function (output) {
+            console.log("ClassWithMethodDec.print (" + output + ") called.");
+        };
+        __decorate([
+            methodDec
+        ], ClassWithMethodDec.prototype, "print", null);
+        return ClassWithMethodDec;
+    }());
+    // using method decorators to create an audit trail
+    function auditLogDec(target, methodName, descriptor) {
+        console.log("auditLogDec is called here");
+        console.log("method name is " + methodName);
+        if (descriptor === undefined) {
+            descriptor = Object.getOwnPropertyDescriptor(target, methodName);
+        }
+        var originalFunction = target[methodName];
+        var auditFunction = descriptor;
+        auditFunction.value = function () {
+            console.log("auditLogDec : override of " + methodName + " called");
+            originalFunction.apply(this, arguments);
+        };
+        target[methodName] = auditFunction;
+        console.log("target method name is now  " + methodName);
+        return auditFunction;
+    }
+    var ClassWithAuditDec = /** @class */ (function () {
+        function ClassWithAuditDec() {
+        }
+        ClassWithAuditDec.prototype.print = function (output) {
+            console.log("ClassWithMethodDec.print (" + output + " called.)");
+        };
+        __decorate([
+            auditLogDec
+        ], ClassWithAuditDec.prototype, "print", null);
+        return ClassWithAuditDec;
+    }());
+    var auditClass = new ClassWithAuditDec();
+    auditClass.print("test ");
+    // parameter decorators
+    function parameterDec(target, methodName, parameterIndex) {
+        console.log("target: " + target);
+        console.log("methodName: " + methodName);
+        console.log("parameterIndex " + parameterIndex);
+    }
+    var ClassWithParamDec = /** @class */ (function () {
+        function ClassWithParamDec() {
+        }
+        ClassWithParamDec.prototype.print = function (value, name) {
+            console.log("in print");
+            // note no name or type or value info
+            // not much use
+            // this was in the book. checking current status.
+            // interested code, where you can mark a parameter as
+            // required, and then the decorate the method itself
+            // with a validate decorator
+        };
+        __decorate([
+            __param(0, parameterDec), __param(1, parameterDec)
+        ], ClassWithParamDec.prototype, "print", null);
+        return ClassWithParamDec;
+    }());
+    var cp = new ClassWithParamDec();
+    cp.print("hello", "world");
 })(ExperimentsDecorators || (ExperimentsDecorators = {}));
 //# sourceMappingURL=hello3.js.map

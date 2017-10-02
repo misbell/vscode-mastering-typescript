@@ -15,6 +15,9 @@ http://blog.teamtreehouse.com/introduction-source-maps
 
 scade swift
 
+typescript decorator code
+https://gist.github.com/remojansen/16c661a7afd68e22ac6e
+
 
 
 HANDY
