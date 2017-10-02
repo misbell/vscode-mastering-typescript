@@ -17,6 +17,8 @@ scade swift
 
 typescript decorator code
 https://gist.github.com/remojansen/16c661a7afd68e22ac6e
+http://blog.wolksoftware.com/decorators-metadata-reflection-in-typescript-from-novice-to-expert-part-3
+
 
 
 

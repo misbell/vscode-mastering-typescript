@@ -1,4 +1,6 @@
 
+import 'reflect-metadata';
+
 namespace ExperimentsDecorators {
 
 
@@ -119,7 +121,7 @@ namespace ExperimentsDecorators {
 
     // using method decorators to create an audit trail
 
-    function auditLogDec(target: any, methodName: string, descriptor?: PropertyDescriptor ) {
+    function auditLogDec(target: any, methodName: string, descriptor?: PropertyDescriptor) {
 
         console.log(`auditLogDec is called here`);
         console.log(`method name is ${methodName}`)
@@ -127,12 +129,12 @@ namespace ExperimentsDecorators {
         if (descriptor === undefined) {
             descriptor = Object.getOwnPropertyDescriptor(target, methodName);
         }
-        
+
         let originalFunction = target[methodName];
 
         let auditFunction = descriptor;
 
-         auditFunction.value = function() {
+        auditFunction.value = function () {
             console.log(`auditLogDec : override of ${methodName} called`);
             originalFunction.apply(this, arguments);
 
@@ -162,11 +164,11 @@ namespace ExperimentsDecorators {
         console.log(`target: ${target}`);
         console.log(`methodName: ${methodName}`);
         console.log(`parameterIndex ${parameterIndex}`);
-     
+
     }
 
     class ClassWithParamDec {
-        print(@parameterDec value: string, @parameterDec name: string) {
+        print( @parameterDec value: string, @parameterDec name: string) {
 
             console.log(`in print`);
             // note no name or type or value info
@@ -177,6 +179,9 @@ namespace ExperimentsDecorators {
             // required, and then the decorate the method itself
             // with a validate decorator
 
+            // https://www.typescriptlang.org/docs/handbook/decorators.html#parameter-decorators
+
+
         }
 
     }
@@ -184,5 +189,36 @@ namespace ExperimentsDecorators {
     let cp = new ClassWithParamDec();
     cp.print("hello", "world");
 
+
+    // and now moving on to metadata
+
+
+    function metadataParameterDec(target: any, methodName: string, parameterIndex: number) {
+
+
+        let designType = Reflect.getMetadata("design:type", target, methodName);
+        console.log(`designType: ${designType}`);
+
+        let designParamTypes = Reflect.getMetadata("design:paramtypes", target, methodName);
+        console.log(`paramtypes: ${designParamTypes}`);
+
+        let designReturnType = Reflect.getMetadata("design:returntype", target, methodName);
+        console.log(`returnType: ${designReturnType}`);
+        
+    }
+
+    class ClassWithMetaData {
+        print(
+            @metadataParameterDec
+            id: number,
+            name: string): number {
+                return 1000;
+
+        }
+
+    }
+
+ // stopped here to npm install reflect-metadata and @types/reflect-metadata
+ 
 
 }

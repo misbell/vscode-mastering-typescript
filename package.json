@@ -9,8 +9,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/reflect-metadata": "0.0.5",
     "grunt": "^1.0.1",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-exec": "^3.0.0"
+  },
+  "dependencies": {
+    "reflect-metadata": "^0.1.10"
   }
 }
